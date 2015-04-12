@@ -13,7 +13,7 @@ class Tmatrix:
         self.tmatrix = numpy.matrix(system_constructor)
 
     def update_system(self, new_matrix_constructor, *args):
-        self.tmatrix = (self.tmatrix)*(numpy.matrix(new_matrix_constructor))
+        self.tmatrix = (numpy.matrix(new_matrix_constructor))*(self.tmatrix)
         for strings in args:
             self.update_system(strings)
         
