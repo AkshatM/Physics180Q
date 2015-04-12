@@ -1,24 +1,29 @@
 import numpy
 import cmath
 
-def radius_of_curvature(q):
-    return 1/q.real
+def radius_of_curvature(inverse_q):
+    ''' Returns the radius of curvature from an existing quality factor 1/q, denoted by inverse_q here'''
+    return float(1/inverse_q.real)
 
-def waist_factor(q, wavelength=635e-9, index = 1):
-    return cmath.sqrt(-index*numpy.pi*q.imag/(wavelength))
+def waist_factor(inverse_q, wavelength=635e-9, index = 1):
+    ''' Returns the waist of a beam from an existing quality factor 1/q, denoted by inverse_q here. 
+    Default options for wavelength and index of refraction are specified.'''
+    return cmath.sqrt(-index*numpy.pi*inverse_q.imag/(wavelength))
 
 class Tmatrix:
 
     def __init__(self,system_constructor='1,0;0,1'):
+        ''' Constructs a Tmatrix. If you feed in no arguments, it assumes it's a 2D identity matrix'''
         self.tmatrix = numpy.matrix(system_constructor)
 
     def update_system(self, new_matrix_constructor, *args):
+        ''' Updates the system - just feed in the strings corresponding to the matrices in your system in the order they appear '''
         self.tmatrix = (numpy.matrix(new_matrix_constructor))*(self.tmatrix)
         for strings in args:
             self.update_system(strings)
         
     def new_quality_factor(self,inverse_q):
-        # remember to feed in 1/q - it is treated as a complex number here
+        ''' Returns the quality factor of a beam with initial inverted quality factor inverse_q after it passes through our system''''
         return (self.tmatrix[1,0] + self.tmatrix[1,1]*(inverse_q))/(self.tmatrix[0,0] + self.tmatrix[0,1]*(inverse_q))
 
         
