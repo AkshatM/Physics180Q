@@ -116,8 +116,54 @@ Predicted $w_{0x}$ Distance & Measured $w_{0x}$ Distance & Predicted $w_{0y}$ Di
 1869 mm & 1865 mm & 5406 mm & 872 mm \\ 
 \hline 
 \end{tabular}
-\caption{Predictions vs. Experiment} 
+\caption{Predictions vs. Experiment for Part 5} 
 \end{table}
 \section*{Part 5: Numerically Calculating the Behavior of a Lens}
+We chose a lens of focal length 53 mm, and numerically modeled it. Our T-matrix was obtained by multiplying
+$$\begin{bmatrix}
+  1 & d \\
+  0 & 1 \\
+\end{bmatrix}\begin{bmatrix}
+  1 & 0 \\
+  -\dfrac{1}{f} & 1 \\
+\end{bmatrix} = \begin{bmatrix}
+  1 - \dfrac{d}{f} & d \\
+  -\dfrac{1}{f} & 1 \\
+\end{bmatrix}$$
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{../Analysis/figure_5.png}
+\caption{For $f$ = 53 mm} 
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{../Analysis/figure_6.png} 
+\caption{For $f$ = 30 mm. Included for comparison with Figure 5.}
+\end{figure}
+\noindent We did not measure the actual minimum spot size, although we did measure where it occurred. The \textbf{minimum spot size} occurred at 80 mm from the head of the laser, or about 50 mm from the lens.\\
+\\
+Using the equation outlined in the lab manual i.e. $$z_{m} = \dfrac{f}{1 + \left(\dfrac{f\lambda}{\pi w_{01}^{2}}\right)^{2}} $$
+, setting the wavelength equal to 635 nm, and discerning the relevant values of $w_{01}^{2}$ from Part 6, we obtain 
+$$z_{my} = 52.999984167\;\mathrm{mm}$$
+$$z_{mx} = 52.999999419\;\mathrm{mm}$$
+which is approximately equal to the focal length anyway.
+
 \section*{Part 6: Measuring the Effect of a Lens on a Beam}
+We kept a lens of focal length 53 mm away from our lens, and worked out the beam profile at that point in a similar fashion to Part 4. 
+\begin{figure}[h]
+\centering
+\includegraphics[scale =0.8]{../Analysis/figure_7.png}
+\caption{Figure Relevant to Part 6. Red indicates the observed data; blue indicates our nonlinear fit to it.}
+\end{figure}
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline 
+$w_{x}$ & Correction & Mean & Percent Diff. & $w_{y}$ & Correction & Mean & Percent Diff. \\ 
+\hline 
+0.32 & 4.34 & 4.43 & 2\% & 0.14 & 2.77 & 2.75 & 0.7\% \\ 
+\hline 
+\end{tabular}
+\caption{Table relevant to Part 6}
+\end{table}
 \end{document}

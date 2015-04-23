@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.5.26)  22 APR 2015 14:18
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.5.26)  23 APR 2015 01:41
 entering extended mode
 **Lab3.tex
 ("C:\Users\Akshat Mahajan\LaTeX Projects\180Q Reports\Week 3\Paper\Lab3.tex"
@@ -407,14 +407,45 @@ Underfull \hbox (badness 10000) in paragraph at lines 105--121
  []
 
 [5 <C:/Users/Akshat Mahajan/LaTeX Projects/180Q Reports/Week 3/Analysis/figure_
-4.png>] [6]
+4.png>] <../Analysis/figure_5.png, id=45, 589.0005pt x 444.4605pt>
+File: ../Analysis/figure_5.png Graphic file (type png)
+
+<use ../Analysis/figure_5.png>
+Package pdftex.def Info: ../Analysis/figure_5.png used on input line 135.
+(pdftex.def)             Requested size: 483.69687pt x 365.01608pt.
+
+<../Analysis/figure_6.png, id=46, 589.0005pt x 444.4605pt>
+File: ../Analysis/figure_6.png Graphic file (type png)
+
+<use ../Analysis/figure_6.png>
+Package pdftex.def Info: ../Analysis/figure_6.png used on input line 140.
+(pdftex.def)             Requested size: 483.69687pt x 365.01608pt.
+ [6 <C:/Users/Akshat Mahajan/LaTeX Projects/180Q Reports/Week 3/Analysis/figure
+_5.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 143--145
+
+ []
+
+<../Analysis/figure_7.png, id=52, 589.0005pt x 444.4605pt>
+File: ../Analysis/figure_7.png Graphic file (type png)
+
+<use ../Analysis/figure_7.png>
+Package pdftex.def Info: ../Analysis/figure_7.png used on input line 155.
+(pdftex.def)             Requested size: 471.20103pt x 355.56888pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[7 <C:/Users/Akshat Mahajan/LaTeX Projects/180Q Reports/Week 3/Analysis/figure_
+6.png>] [8 <C:/Users/Akshat Mahajan/LaTeX Projects/180Q Reports/Week 3/Analysis
+/figure_7.png>]
 ("C:\Users\Akshat Mahajan\LaTeX Projects\180Q Reports\Week 3\Paper\Lab3.aux") )
  
 Here is how much of TeX's memory you used:
- 3957 strings out of 493921
- 57332 string characters out of 3147255
+ 3973 strings out of 493921
+ 57722 string characters out of 3147255
  120347 words of memory out of 3000000
- 7198 multiletter control sequences out of 15000+200000
+ 7211 multiletter control sequences out of 15000+200000
  12515 words of font info for 48 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,12n,38p,857b,364s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -433,9 +464,9 @@ MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9
 ype1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
 nts/cm/cmti10.pfb>
-Output written on Lab3.pdf (6 pages, 2968177 bytes).
+Output written on Lab3.pdf (8 pages, 3060932 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
+ 112 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
