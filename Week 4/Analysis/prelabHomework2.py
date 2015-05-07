@@ -2,9 +2,11 @@ from OpticsCodes import Tmatrix,radius_of_curvature,waist_factor
 from itertools import product
 import numpy as np
 
+desired_waist = pow(75*670e-9/(np.pi*pow(3,0.5)),0.5)
+
 focal_length_list = [53,30,33,94,106,75,35,40] # in mm
 propagation_distance = np.arange(0,100,1) # in mm
-inverse_q_factor = -1j*670e-9/(np.pi*pow(1e-3,2))
+inverse_q_factor = -1j*670e-9/(np.pi*pow(desired_waist,2))
 desired_inverse_q = -1j*670e-9/(np.pi*pow(2.79e-4,2))
 
 print 'Inverse Q factor init: ' + str(inverse_q_factor)
