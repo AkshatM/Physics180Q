@@ -1,0 +1,414 @@
+%%   This file is part of the APS files in the REVTeX 4 distribution.
+%%   Version 4.0 of REVTeX, August 2001
+%%
+%%
+%%   Copyright (c) 2001 The American Physical Society.
+%%
+%%   See the REVTeX 4 README file for restrictions and more information.
+%%
+%
+% This is a template for producing manuscripts for use with REVTEX 4.0
+% Copy this file to another name and then work on that file.
+% That way, you always have this original template file to use.
+%
+% Group addresses by affiliation; use superscriptaddress for long
+% author lists, or if there are many overlapping affiliations.
+% For Phys. Rev. appearance, change preprint to twocolumn.
+% Choose pra, prb, prc, prd, pre, prl, prstab, or rmp for journal
+%  Add 'draft' option to mark overfull boxes with black boxes
+%  Add 'showpacs' option to make PACS codes appear
+
+% Edited by Camilla Harris Jan 2015
+% this file and auxiliary files were retrieved from
+% http://www-d0.fnal.gov/Run2Physics/WWW/templates/
+% on Jan 19 2015
+
+\documentclass[aps,prl,nofootinbib,twocolumn,superscriptaddress,groupedaddress]{revtex4}  % for review and submission
+%\documentclass[aps,preprint,superscriptaddress,groupedaddress]{revtex4}  % for double-spaced preprint
+% CAMILLA: I removed the PACS functionality
+\usepackage{graphicx}  % needed for figures
+	%if using postscript files compile with XeLaTex
+\usepackage{dcolumn}   % needed for some tables
+\usepackage{bm}        % for math
+\usepackage{amssymb}   % for math
+\usepackage[export]{adjustbox}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{multirow, bigdelim}
+
+% avoids incorrect hyphenation, added Nov/08 by SSR
+\hyphenation{ALPGEN}
+\hyphenation{EVTGEN}
+\hyphenation{PYTHIA}
+\allowdisplaybreaks
+\begin{document}
+\title{Violations of the CHSH Inequality, and subsequent implications for local hidden variable theories}
+\input author_list.tex        % includes institutions and visitors
+\date{\today}
+
+\begin{abstract}
+In this paper, we demonstrate a violation of the CHSH inequality, a version of Bell's inequality, by upto two standard deviations using entangled photons produced by parametric fluorescence. A description of our experimental apparatus is presented alongside our results, as well as a discussion on the implications for quantum mechanics and local hidden variable theories. 
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Quantum mechanics provides a complete and elegant set of recipes for the computation of physical processes at the atomic and subatomic scale - however, it implies that physical states are indeterminate (existing in a superposition of possible final states) prior to measurement, and furthermore is inherently nonlocal. These (then-controversial) implications led in the mid-twentieth century to the argument that quantum mechanics may be \textsl{incomplete}, and that physical states in reality have `hidden' variables currently unknown to us that permit determinism. Different values of these hidden variables govern which final state is revealed following a measurement. 
+
+Attempts to reproduce quantum mechanics using hidden variables eventually led, among others, to a class of theories collectively termed \textsl{local hidden variable theories}, which require that information transfer is bounded by the speed of light. In 1964, John Stewart Bell published a set of inequalities (the famous \textsl{Bell inequalities}) that all local hidden variable theories implicitly obey. Observed violations of these inequalities in experiment would lead to the conclusion that local hidden variable theories \textit{cannot} reproduce quantum mechanics, and must therefore be abandoned.
+
+In this paper, we document the violation of an equivalent version of Bell's inequality called the \textit{Clauser-Horne-Shimony-Holt} (or CHSH) inequality, and thereby prove that quantum mechanics cannot in principle be described by local hidden variable theories. Our experiment measures coincidence count rates of generated photons in entangled vertical or horizontal polarisation states through rotatable polarisers, allowing us to test the CHSH inequality directly. In the following subsections, we lay out the mathematical  and physical groundwork behind our experiment, and explain how entangled photons can be used to define Bell's inequality.
+\subsection{Derivation of Bell's Inequality and the CHSH Inequality}
+
+The following derivation appears in Zhou\cite{bellderivation}. We first derive the CHSH inequality, and arrive at Bell's inequality as a special case.
+
+Imagine two particles jointly prepared in a state that moves in two different directions towards two different measuring devices, each of which measure some common property of these particles. This property could be the spin of the particles, or the polarisation state, or something else altogether. These detectors have adjustable settings $\hat{a}$ and $\hat{b}$ respectively. Under the framework of local hidden variable theory, we assume that the measurement outcomes (the final state) for the first and second particle depend on a hidden variable $\lambda$, sampled from a probability distribution $p(\lambda)$, and the value of the detector settings\footnote{In \textit{nonlocal} hidden variable theories, the value of the property measured for the \textit{other} particle can also affect the measurement outcome. i.e. $A = A(\hat{a},\hat{b},\lambda), B = B(\hat{b},\hat{a},\lambda)$.} at that point. We can always choose appropriate units or multiplication factors to constrain the measured values to lie between $[-1,1]$ - we proceed as if the measured values can only take on values between these limits. In other words, if $A$ and $B$ are the measurement outcomes for each particle, then
+\begin{align}
+A &= A(\hat{a}, \lambda), A \in [-1,1]\\
+B &= B(\hat{b}, \lambda), B \in [-1,1]
+\end{align}
+As a side issue, the detectors themselves might have hidden variables $\lambda'$ that affect the outcome - it could be that $\hat{a} = \hat{a}(\lambda')$ and $\hat{b} = \hat{b}(\lambda')$. To avoid this issue, we can \textit{average} over our measurement outcomes, thus getting measurement outcomes $\overline{A},\overline{B}$ that are relatively independent of any one set of detector hidden variables $\lambda'$. This is what is done in practice with particle ensembles (see section on Experiment Details), and we will here on refer to the average values $\overline{A}, \overline{B}$ as our measurement outcomes.
+
+At this stage, we can define the quantity $E(\hat{a}, \hat{b})$, the so-called inter-particle correlation, which averages over the hidden variable $\lambda$:
+
+\begin{equation}
+E(\hat{a}, \hat{b}) \equiv \expval{\overline{A}\cdot\overline{B}} =  \int\overline{A}(\hat{a},\lambda)\cdot\overline{B}(\hat{b},\lambda)\cdot p(\lambda)\;\mathrm{d}\lambda
+\end{equation}
+
+If we consider alternate detector settings $\hat{a'}, \hat{b'}$, then we can calculate that
+
+\begin{align}
+& E(\hat{a}, \hat{b}) - E(\hat{a}, \hat{b'}) \nonumber \\
+&= \int [\overline{A}(\hat{a},\lambda)\cdot\overline{B}(\hat{b},\lambda) - \overline{A}(\hat{a},\lambda)\cdot\overline{B}(\hat{b'},\lambda)] \cdot p(\lambda)\;\mathrm{d}\lambda\nonumber \\
+&= \int \overline{A}(\hat{a},\lambda)\cdot\overline{B}(\hat{b},\lambda)\cdot [1 \pm  \overline{A}(\hat{a'},\lambda)\cdot\overline{B}(\hat{b'},\lambda)]\cdot p(\lambda)\;\mathrm{d}\lambda\nonumber \\
+&- \int \overline{A}(\hat{a},\lambda)\cdot\overline{B}(\hat{b'},\lambda)\cdot [1 \pm  \overline{A}(\hat{a'},\lambda)\cdot\overline{B}(\hat{b},\lambda)]\cdot p(\lambda)\;\mathrm{d}\lambda
+\end{align}
+
+Since $\lvert \overline{A} \rvert \leq 1$ and $\lvert \overline{B} \rvert \leq 1$, and viewing these integrals in terms of Eq. (3), we can write Eq. (4) as
+\begin{equation}
+\lvert E(\hat{a}, \hat{b}) - E(\hat{a}, \hat{b'}) \rvert \leq 2 \pm   [E(\hat{a}, \hat{b}) - E(\hat{a}, \hat{b'})]
+\end{equation}
+or simply 
+\begin{equation}
+\lvert S \rvert \equiv \lvert E(\hat{a}, \hat{b}) - E(\hat{a}, \hat{b'}) + E(\hat{a}, \hat{b}) + E(\hat{a}, \hat{b'})\rvert \leq 2
+\end{equation}
+Eq. (6) is the CHSH inequality. We can derive Bell's inequality 
+\begin{equation}
+\lvert E(\hat{a}, \hat{b}) - E(\hat{a}, \hat{b'}) \rvert \leq 1 + E(\hat{b}, \hat{b'})
+\end{equation}
+if we set $\hat{a} = \hat{b}$ and take $E(\hat{b'}, \hat{b'}) = -1$. A violation of the CHSH inequality occurs when $\lvert S \rvert > 2$.
+\subsection{Entangled States}
+
+Experimental tests of Bell's inequality tend to focus on the behaviour of entangled states: wavefunctions for many-particle systems which cannot be written out as some linear combination of single-particle states. For example, the singlet state for two particles 
+\begin{equation}
+\ket{\Psi_{s}} = \dfrac{1}{\sqrt{2}}\left(\ket{\uparrow}_{1}\ket{\downarrow}_{2} - \ket{\uparrow}_{2}\ket{\downarrow}_{1}\right)
+\end{equation}
+cannot be written out as a linear combination of spinors $\ket{\uparrow}_{1}$, $\ket{\uparrow}_{2}$, $\ket{\downarrow}_{1}$, and $\ket{\downarrow}_{2}$. 
+
+Entangled states are important as they introduce \textsl{correlations} between individual particle states over different possible outcomes. For instance, no matter what the measured state of the singlet state is, the spin of the first particle is always opposite (always \textit{anti-correlated}) to that of the spin of the second particle. Entangled states are ideal candidates for tests of the Bell inequality because this sort of correlation is always constrained to lie between -1 and 1 - exactly the properties we defined for $A$ and $B$ in our derivation of the CHSH inequality. Consequently, we can define the inter-particle correlation $E(\hat{a},\hat{b})$ using this property, and thus connect our measurements of a particular entangled state (we call these Bell states) back to Bell's inequality.
+
+In particular, consider two photons, each of which can either be horizontally polarised (in state $\ket{H}$) or vertically polarized (in state $\ket{H}$) with respect to the vertical direction. They are entangled if their overall wavefunction can be expressed as either one of the following Bell states.
+
+\begin{equation}
+\ket{\Psi_{\pm}} = \dfrac{1}{\sqrt{2}}\left(\ket{H}_{1}\ket{V}_{2} \pm \ket{H}_{2}\ket{V}_{1}\right)
+\end{equation}
+
+If we have a polariser (our `detector') oriented at an angle $\alpha$ (say) respectively from the vertical, then we can express $\ket{H}, \ket{V}$ in terms of the detector axes $\ket{H(\alpha)}, \ket{V(\alpha)}$:
+
+\begin{align}
+\ket{V} &= \;\;\;\cos{\alpha}\ket{V(\alpha)}+\sin{\alpha}\ket{H(\alpha)}\\
+\ket{H} &= -\sin{\alpha}\ket{V(\alpha)}+\cos{\alpha}\ket{H(\alpha)}
+\end{align}
+
+We now have a framework to determine the \textit{probability} of measuring horizontal and vertical transmission at a particular polariser setting. For two entangled photons, we can have two polarisers at angles $\hat{\alpha}$ and $\hat{\beta}$, enabling us to calculate the specific probabilities of every possible event. There are four possible measurements that can be made:
+
+\begin{enumerate}
+\item both photons are horizontally polarised at the polariser angles, with probability $P_{HH}(\alpha,\beta) = \lvert \matrixel{H(\alpha)}{H(\beta)}{\Psi}\rvert ^{2}$; 
+\item both photons are vertically polarised, with probability $P_{VV}(\alpha,\beta) = \lvert \matrixel{V(\alpha)}{V(\beta)}{\Psi}\rvert ^{2}$; 
+\item the first photon is horizontally polarised while the other is vertically polarised, with probability $P_{HV}(\alpha,\beta) = \lvert \matrixel{H(\alpha)}{V(\beta)}{\Psi}\rvert ^{2}$; and 
+\item the first photon is vertically polarised while the other is horizontally polarised, with probability $P_{VH}(\alpha,\beta) = \lvert \matrixel{V(\alpha)}{H(\beta)}{\Psi}\rvert ^{2}$. 
+\end{enumerate} 
+
+This enumeration of possibilities allows us to arrive at a suitable definition for $E(\hat{\alpha},\hat{\beta})$ as follows:
+\begin{align}
+E(\hat{\alpha},\hat{\beta}) &= P_{VV}(\hat{\alpha},\hat{\beta}) + P_{HH}(\hat{\alpha},\hat{\beta}) \nonumber\\
+&\;\;- P_{VH}(\hat{\alpha},\hat{\beta}) - P_{HV}(\hat{\alpha},\hat{\beta})
+\end{align}
+The correctness of this expression can be verified by comparison with Eq. (3). One can readily observe that the right-hand side of Eq. (12) is equivalent to the inner product of averaged detector outcomes in this toy experiment - a negative sign is suitably applied whenever an anti-correlation is involved, as we would expect from a correlation measure. A formal  derivation of Eq. (12) from first principles is provided in Zhou\cite{bellderivation} - we retain this notation and intuition here for clarity. We will examine Eq. (12) more thoroughly in light of our experiment, described below.
+
+\section{Experiment Details}
+Our experiment consists of explicitly measuring $\lvert S \rvert$ for photons whose polarisation states are entangled. Blue laser light at wavelength 410 nm is filtered through a beta-barium-borate crystal, which employs \textit{spontaneous parametric down conversion} (SPDC) to produce two red laser light beams ($\lambda = 810$ nm) made to go along separate paths. The BBO crystal introduces birefringence effects which render the beams out of phase - to correct for this, we introduce compensation crystals that can be oriented to perfectly match the phase. We further place   polarisers that can be oriented at various angles, going from 0 to 360$^{\circ}$, in the beam paths. Both light beams are made to fall on two separate detectors. Coincidence count rates - the number of photons passing through both polarisers and striking both detectors simultaneously - are measured. Fig. (1) contains a schematic of our experiment. The experimental apparatus actually used was provided by Qutools Inc. as part of their standard quED Entanglement Demonstrator set \cite{qued}. Our final wave function is described by
+
+\begin{equation}
+\ket{\Psi} = \dfrac{1}{\sqrt{2}}\left(\ket{H}_{1}\ket{V}_{2} + e^{i\phi} \ket{H}_{2}\ket{V}_{1}\right)
+\end{equation}
+
+where $\phi$ indicates a phase difference, controlled by altering the alignment of the compensation crystals. Fig. (2) illustrates how this phase matching is performed. SPDC inherently results in anti-correlated (Type II) photon states, guaranteeing only an anti-correlation prior to measurement. A full discussion of spontaneous parametric down-conversion can be found in Vamivakas \textit{et al}\cite{spdc}.
+
+\begin{figure}[t]
+\includegraphics[width = 0.48\textwidth]{../../../Pictures/schematic.png}
+\caption{Experiment schematic\cite{qued}. Red beams indicate light of wavelength 810 nm. `Crystal' has been abbreviated to `xtal'.}
+\end{figure}
+
+\begin{figure}[b]
+\includegraphics[width = 0.43\textwidth]{../../../Pictures/schematic2.png}
+\caption{Type II phase matching following our SPDC event.}
+\end{figure}
+
+There is a natural analogy between the terms in Eq. (12) and the coincidence count rates. Assuming a frequentist approach to probability, one can equate the probability of observing both photons in some pair of states for the polariser angles $\alpha$ and $\beta$ to the coincidence counts at those settings divided by the total number of photons measured at all settings. Applying this analogy to the terms in Eq. (12), we can arrive at the straightforward result that 
+\begin{equation}
+E(\hat{\alpha},\hat{\beta}) = \dfrac{N(\hat{\alpha},\hat{\beta}) + N(\hat{\alpha_{\bot}},\hat{\beta_{\bot}}) - N(\hat{\alpha_{\bot}},\hat{\beta}) - N(\hat{\alpha},\hat{\beta_{\bot}})}{N(\hat{\alpha},\hat{\beta}) + N(\hat{\alpha_{\bot}},\hat{\beta_{\bot}}) + N(\hat{\alpha_{\bot}},\hat{\beta}) + N(\hat{\alpha},\hat{\beta_{\bot}})}
+\end{equation}
+where $N$ is the coincidence count rate, and a $\bot$ sign indicates a rotation of that angle by 90 degrees (thereby converting a horizontal axis to a vertical, and vice-versa). The standard error for such a measurement can be derived as 
+\begin{equation}
+\Delta E = 2\sqrt{\dfrac{N(\hat{\alpha},\hat{\beta}) + N(\hat{\alpha_{\bot}},\hat{\beta_{\bot}}) - N(\hat{\alpha_{\bot}},\hat{\beta}) - N(\hat{\alpha},\hat{\beta_{\bot}})}{N(\hat{\alpha},\hat{\beta}) + N(\hat{\alpha_{\bot}},\hat{\beta_{\bot}}) + N(\hat{\alpha_{\bot}},\hat{\beta}) + N(\hat{\alpha},\hat{\beta_{\bot}})^{3}}}
+\end{equation}
+This formula follows from the assumption that each coincidence count obeys a Poisson distribution and the multivariate propagation of error formula\footnote{Certain sources\cite{qued} neglect the cubed term in the denominator, but this is incorrect: applying those equations to our experimental data produces standard errors $>$ 10, which is clearly implausible. A. Mahajan is grateful to H. Qin for providing Eq. (15)}. We can continue our error propagation to $|S|$ as
+\begin{align}
+\Delta S = & \left[\Delta E(\hat{\alpha},\hat{\beta})^{2} + \Delta E(\hat{\alpha'},\hat{\beta})^{2} + \Delta E(\hat{\alpha},\hat{\beta'})^{2} + \right. \nonumber \\
+& \left . \Delta E(\hat{\alpha'},\hat{\beta'})^{2}\right]^{\frac{1}{2}}
+\end{align}
+
+\subsection{Experimental Artifacts}
+
+In this section, we examine the actual apparatus of our experiment in more detail. 
+
+We employed standard polarisers as provided by Qutools Inc. with the quED set. The polariser in the first arm (closest to the blue box in Fig. (1)) had a transmission axis offset by 1 degree from the vertical, whereas the polariser in the second arm had a transmission axis offset by 7 degrees from the vertical. These offsets were corrected for in every measurement, and all results presented here are inclusive of these offsets.
+
+Owing to long-term use of the quED apparatus, coincidence count rates and single count rates differed significantly from published values\cite{qued} for the instruments used. All equipment was standard Qutools issue. Coincidence count rates at maximum were measured to be about 2.8\% the published value of 7000 s$^{-1}$. Single photon rates were recorded to be about 20\% of the recorded values of 34000 s$^{-1}$ and 41000 s$^{-1}$. Individual dark count rates were not measured, as they do not significantly affect coincidence count rates, but an overall background coincidence count level of about 3 $\pm$ 2 s$^{-1}$ was observed. To correct for these suboptimal conditions, we chose to employ integration times of 10 s, taking five readings each for every measurement. 
+
+Our incident laser was always operated at the recommended current of 38 mA. No deviation was made from the ideal operation conditions. Vibrations were damped by the application of a provided damping board, upon which the experiment was mounted.
+
+\subsection{Procedure}
+The behaviour of $\ket{\Psi_{+}}$ and $\ket{\Psi_{-}}$ differ drastically when the polarisers are rotated to a diagonal basis (i.e. to angles $\pm\frac{\pi}{4}$) - in particular, $\ket{\Psi_{+}}$ results in minimum coincidence count rates for the orientation $\alpha, \beta = \pm \frac{\pi}{4}, \mp \frac{\pi}{4}$, whereas a minimum is observed for $\ket{\Psi_{-}}$ in the orientation $\alpha, \beta = \pm \frac{\pi}{4}, \pm \frac{\pi}{4}$. Conversely, each state is at a maximum for the orientation where the other state is at a minimum. Derivations of these results are omitted for conciseness, but can be straightforwardly obtained by applying Egs. (10) and (11) to Eq. (9) for $\alpha = \beta = \pm \frac{\pi}{4}$. These facts are made use of in preparing the respective Bell states. 
+
+One can roughly estimate the visibility (degree of entanglement) by calculating
+\begin{align}
+&V = \dfrac{C_{\mathrm{max}} - C_{\mathrm{min}}}{C_{\mathrm{max}} + C_{\mathrm{min}}}\\
+\Delta V = &\dfrac{\sqrt{4C^{2}_{min}C_{max} + 4C^{2}_{max}C_{min}}}{(C_{max} + C_{min})^{2}}
+\end{align} where $C_{max}$ refers to the coincidence count rates in the basis for the state where the coincidence count is supposed to be at a maximum, and $C_{min}$ where the coincidence count is supposed to be at a minimum. Ideally, we want a visibility as high as possible. Published values for the visibility are in excess of 98\% in the horizontal/vertical basis and 93\% in the diagonal basis. Owing to the diminished performance of the apparatus, this high standard may not be feasible for our measurements.
+
+We first prepared the $\ket{\Psi_{+}}$ state, choosing $\hat{\alpha},\hat{\beta},\hat{\alpha'},\hat{\beta'} = -\frac{\pi}{4},\frac{\pi}{8},0,-\frac{\pi}{8}$ for our experiment settings, by manipulating $\phi$. The polarisers were rotated into the basis for which $\ket{\Psi_{+}}$ is supposed to be at minimum, and $\phi$ varied until the coincidence count rates appeared to arrive at a minimum. A quick measurement of the visibility (degree of entanglement) was made for this state, following which we performed 16 measurements, four for each term in $|S|$. 
+
+We then prepared the $\ket{\Psi_{-}}$ state, this time choosing $\hat{\alpha},\hat{\beta},\hat{\alpha'},\hat{\beta'} = -\frac{\pi}{4},-\frac{\pi}{8},0,\frac{\pi}{8}$ for our experiment settings. We took visibility measurements, and repeated our measurements for each term in $|S|$ as we did for $\ket{\Psi_{+}}$.
+
+\section{Results}
+
+\subsection*{For $\ket{\Psi_{+}}$}
+
+Table I describes our attempts to optimise towards this state. All angles reported are inclusive of corrections.
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{Optimisation}\\
+$C_{max}$ (s$^{-1}$) & $C_{min}$ (s$^{-1}$)\\
+\hline
+24.3 & 1.5 \\
+22.3 & 2.2 \\
+20.6 & 1.8 \\
+21.6 & 2.5 \\
+22.1 & 2.1 \\
+\hline
+\multicolumn{2}{|c|}{}\\[-2mm]
+\multicolumn{2}{|c|}{$\overline{C_{max}} = 22.18$}\\
+\multicolumn{2}{|c|}{$\overline{C_{min}} = 2.02$}\\
+\multicolumn{2}{|c|}{$V = 0.83;\; \Delta V = 0.11$}\\
+\hline
+\end{tabular}
+\caption{Visibility checks for state $\ket{\Psi_{+}}$}
+\end{table}
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+$\alpha$ & $\beta$ & Coincidence Counts (in s$^{-1}$)\\
+\hline
+-45 & -22.5 & 12.58\\
+-45 & 22.5 & 1.48\\
+-45 & 67.5 & 11.68\\
+-45 & 112.5 & 23.64\\
+\hline
+0 & -22.5 & 3.6\\
+0 & 22.5 & 3.52\\
+0 & 67.5 & 19.38\\
+0 & 112.5 & 19.78\\
+\hline
+45 & -22.5 & 4.24\\
+45 & 22.5 & 15.76\\
+45 & 67.5 & 17.84\\
+45 & 112.5 & 4.02\\
+\hline
+90 & -22.5 & 14.82\\
+90 & 22.5 & 15.78\\
+90 & 67.5 & 3.12\\
+90 & 112.5 & 3.54\\
+\hline
+\end{tabular}
+\caption{Coincidence counts for various angle combinations}
+\end{table}
+Results are collected in Table III. Raw calculations are provided in the Appendix.
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+$\hat{\alpha}$ (in $^{\circ}$) & $\hat{\beta}$ (in $^{\circ}$) & $E(\hat{\alpha},\hat{\beta})$ & $\Delta E$\\
+\hline
+\multicolumn{4}{|c|}{}\\[-2mm]
+-45 & -22.5 & 0.319 & 0.139\\
+-45 & -22.5 & -0.755 & 0.097\\
+0 & -22.5 & -0.672 & 0.115\\
+0 & 22.5 & -0.658 & 0.113 \\
+\hline
+\multicolumn{4}{|c|}{}\\[-2mm]
+\multicolumn{4}{|c|}{$ S = 2.404 \pm 0.233 $}\\
+\hline
+\end{tabular}
+\caption{Final results for the state $\ket{\Psi_{+}}$}
+\end{table}
+All presented coincidence counts in Tables II and III are averages of five measurements for an integration time of 10 seconds each.
+\subsection*{For $\ket{\Psi_{-}}$}
+Table I describes our attempts to optimise towards this state. All angles reported are inclusive of corrections. 
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{Optimisation}\\
+$C_{max}$ (s$^{-1}$) & $C_{min}$ (s$^{-1}$)\\
+\hline
+16.6 & 2.2 \\
+19.2 & 3.2 \\
+19.2 & 3 \\
+18.2 & 2.7 \\
+17.6 & 2.9 \\
+\hline
+\multicolumn{2}{|c|}{}\\[-2mm]
+\multicolumn{2}{|c|}{$\overline{C_{max}} = 18.16$}\\
+\multicolumn{2}{|c|}{$\overline{C_{min}} = 2.8$}\\
+\multicolumn{2}{|c|}{$V = 0.73;\; \Delta V = 0.14$}\\
+\hline
+\end{tabular}
+\caption{Visibility checks for state $\ket{\Psi_{-}}$}
+\end{table}
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+$\alpha$ & $\beta$ & Coincidence Counts (in s$^{-1}$)\\
+\hline
+-45 & -22.5 & 1.8\\
+-45 & 22.5 & 11.3\\
+-45 & 67.5 & 21.22\\
+-45 & 112.5 & 10.12\\
+\hline
+0 & -22.5 & 3.42\\
+0 & 22.5 & 3.76\\
+0 & 67.5 & 19.38\\
+0 & 112.5 & 19.66\\
+\hline
+45 & -22.5 & 14.88\\
+45 & 22.5 & 4.32\\
+45 & 67.5 & 5.76\\
+45 & 112.5 & 20.2\\
+\hline
+90 & -22.5 & 15.06\\
+90 & 22.5 & 13.2\\
+90 & 67.5 & 2.64\\
+90 & 112.5 & 4.8\\
+\hline
+\end{tabular}
+\caption{Coincidence counts for various angle combinations}
+\end{table}
+Results are collected in Table VI. Raw calculations are provided in the Appendix.
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+$\hat{\alpha}$ (in $^{\circ}$) & $\hat{\beta}$ (in $^{\circ}$) & $E(\hat{\alpha},\hat{\beta})$ & $\Delta E$\\
+\hline
+\multicolumn{4}{|c|}{}\\[-2mm]
+-45 & -22.5 & -0.654 & 0.114\\
+-45 & -22.5 & 0.371 & 0.136\\
+0 & -22.5 & -0.630 & 0.116\\
+0 & 22.5 & -0.586 & 0.125 \\
+\hline
+\multicolumn{4}{|c|}{}\\[-2mm]
+\multicolumn{4}{|c|}{$ S = 2.187 \pm 0.246 $}\\
+\hline
+\end{tabular}
+\caption{Final results for the state $\ket{\Psi_{-}}$}
+\end{table}
+
+\section{Conclusion}
+Based on the preceding sections, it is clear that we have violated Bell's inequality conclusively by at least two standard deviations for the $\ket{\Psi_{+}}$. The state $\ket{\Psi_{-}}$ appears to have violated Bell's inequality, but by only 76\% of a standard deviation.
+
+It is possible that our method of calculating the standard deviation is flawed - we have taken rates, rather than raw counts, into our assessments for standard deviation, obtained by dividing the raw averaged counts by 10 seconds each. The standard error for $E$ is a dimension\textit{ful} quantity, and thus multiplying all quantities by ten (in other words, using raw counts rather than rates) results in a value for $E$ that is 3\% of our reported value. This affects the degree of violation significantly, and in such a case both $\ket{\Psi_{+}}$ and $\ket{\Psi_{-}}$ display upto 2$\sigma$ or greater violation of the CHSH inequality. We defend our choice of using rates by virtue of the fact that we expect the distribution of photons impinging on our detector to be given roughly by a homogeneous Possion process, which employ a scalar rate parameter to be effective and thus enabled us to derive Eq. (15) - however, we accept that there is room for alternate calculations and the possibility that this argument may not rest on entirely rigorous grounds.
+
+Low visibility may also be a significant factor. Both of our states are significantly below the 98\% - 93\% visibility criterion that ensures strong violations of Bell's inequality in the horizontal/vertical and diagonal bases respectively. The $\ket{\Psi_{+}}$ demonstrates much larger visibility that, in one standard deviation, comes close to the 93\% threshold, so it may come as no surprise that it demonstrates violations more clearly. 
+
+However, the fact that we have successfully demonstrated clear violation of the CHSH inequality for at least one Bell state permits us to conclude that local hidden variable theories are irreconcilable with quantum mechanics. Nature does not seem prone to classical determinism, and appears to permit non-local collapses of the wavefunction.
+\section{Summary}
+We prepared Bell states from perfectly anticorrelated photons resulting from spontaneous parametric down conversion. Despite poor visibility and suboptimally performing measurement apparatus, we still recorded a clear violation of the CHSH inequality of upto two standard deviations. Raw calculations are furnished in the Appendix; raw numbers are available upon request. Akshat Mahajan is grateful to Hanwen Qin for discussions and insights relating to correctly interpreting measurements theoretically.
+\begin{thebibliography}{1}
+
+\bibitem{bellderivation}
+   \textit{The Implications of Experimental Violation of Bell's Inequalities for Local Realism}, Leo Zhou, May 6th 2013. Accessed online at \url{http://web.mit.edu/leozhou/www/8.06paper.pdf} on May 30th 2015. 
+
+\bibitem{qued}
+   \textit{quED II: User's and Operation Manual}, Qutools Inc. Version 1.1, August 30, 2011. http://www.qutools.com/products/quED/index.php.
+   
+\bibitem{spdc}
+   \textit{Theory of spontaneous parametric down-conversion from photonic crystals}, Vamivaas \textit{et al.}, Physical Review A 70, 043810 (2004). DOI: 10.1103/PhysRevA.70.043810
+\end{thebibliography}
+
+\clearpage
+\newpage
+\appendix
+\onecolumngrid
+\begin{Large}
+\begin{center}
+APPENDIX/SUPPLEMENTARY INFORMATION
+\end{center}
+\end{Large}
+\section{Raw Calculations for $\ket{\Psi_{+}}$}
+\begin{align*}
+E(-45, -22.5) &= \dfrac{12.58 + 17.84 - 4.24 - 11.68}{12.58 + 11.68 + 4.24 + 17.84} = \dfrac{14.5}{46.34} &= 0.319\\
+\Delta E(-45, -22.5) &= 2\sqrt{\dfrac{(12.58 + 17.84)\times(4.24 + 11.68)}{46.34^{3}}} &= 0.139\\
+E(-45, 22.5) &= \dfrac{1.48 + 4.02 - 15.76 - 23.64}{1.48 + 4.02 + 15.76 + 23.64} = \dfrac{-33.9}{44.9} &= -0.755\\
+\Delta E(-45, 22.5) &= 2\sqrt{\dfrac{(1.48 + 4.02)\times(15.76 + 23.64)}{44.9^{3}}} &= 0.097\\
+E(0,-22.5) &= \dfrac{3.6 + 3.12 - 14.82 - 19.38}{3.6 + 3.12 + 14.82 + 19.38} = \dfrac{-27.48}{40.92} &= -0.672\\
+\Delta E(0, -22.5) &= 2\sqrt{\dfrac{(3.6 + 3.12)\times(14.82 + 19.38)}{40.92^{3}}} &= 0.115\\
+E(0,22.5) &= \dfrac{3.52 + 3.54 - 19.78 - 15.78}{3.52 + 3.54 + 15.78 + 3.54} = \dfrac{-28.5}{42.62} &= -0.658\\
+\Delta E(0,22.5) &= 2\sqrt{\dfrac{(3.52 + 3.54)\times(19.78 + 15.78)}{42.62^{3}}} &= 0.113\\
+\end{align*}
+\noindent so that, since we've specified our $\beta,\beta' = 22.5^{\circ}, -22.5^{\circ}$, we have
+\begin{align*}
+\lvert| S \rvert| + \Delta S &= \lvert|E(-45, 22.5) - E(-45, -22.5) + E(0,-22.5) + E(0,-22.5)\rvert|\\
+&\;\pm \sqrt{\Delta E(-45, -22.5)^{2} + \Delta E(-45, 22.5)^{2} + \Delta E(0,-22.5)^{2} + \Delta E(0,-22.5)^{2}}\\
+&= \lvert|-0.755 - 0.319 - 0.672 - 0.658 \rvert| \pm \sqrt{0.139^{2} + 0.097^{2} + 0.115^{2} + 0.113^{2}}\\
+&= 2.404 \pm 0.233
+\end{align*}
+\noindent violating Bell's inequality by roughly two standard deviations.
+\section{Raw Calculations for $\ket{\Psi_{-}}$}
+\begin{align*}
+E(-45, -22.5) &= \dfrac{1.8 + 5.76 - 21.22 - 14.88}{1.8 + 5.76 + 21.22 + 14.88} = \dfrac{-28.54}{43.66} &= -0.654\\
+\Delta E(-45, -22.5) &= 2\sqrt{\dfrac{(1.8 + 5.76)\times(21.22 + 14.88)}{43.66^{3}}} &= 0.114\\
+E(-45, 22.5) &= \dfrac{11.3 + 20.2 - 10.12 - 4.32}{1.48 + 4.02 + 15.76 + 23.64} = \dfrac{17.06}{45.94} &= 0.371\\
+\Delta E(-45, 22.5) &= 2\sqrt{\dfrac{(11.3 + 20.2)\times(10.12 + 4.32)}{45.94^{3}}} &= 0.136\\
+E(0,-22.5) &= \dfrac{3.42 + 4.8 - 15.06 - 21.22}{3.6 + 3.12 + 14.82 + 19.38} = \dfrac{-28.06}{44.5} &= -0.630\\
+\Delta E(0, -22.5) &= 2\sqrt{\dfrac{(3.42 + 4.8)\times(15.06 + 21.22)}{44.5^{3}}} &= 0.116\\
+E(0,22.5) &= \dfrac{3.76 + 4.8 - 19.66 - 13.2}{3.52 + 3.54 + 15.78 + 3.54} = \dfrac{-24.3}{41.42} &= -0.586\\
+\Delta E(0,22.5) &= 2\sqrt{\dfrac{(3.76 + 4.8)\times(19.66 + 13.2)}{41.42^{3}}} &= 0.125\\
+\end{align*}
+\noindent so that, since we've specified our $\beta,\beta' = -22.5^{\circ}, 22.5^{\circ}$, we have
+\begin{align*}
+\lvert| S \rvert| \pm \Delta S &= \lvert|E(-45, -22.5) - E(-45, 22.5) + E(0,-22.5) + E(0,-22.5)\rvert|\\
+&\;\pm \sqrt{\Delta E(-45, -22.5)^{2} + \Delta E(-45, 22.5)^{2} + \Delta E(0,-22.5)^{2} + \Delta E(0,-22.5)^{2}}\\
+&= \lvert|- 0.654 - 0.317 - 0.630 - 0.586 \rvert| \pm \sqrt{0.114^{2} + 0.136^{2} + 0.116^{2} + 0.125^{2}}\\
+&= 2.187 \pm 0.246
+\end{align*}
+\end{document}
