@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.5.18)  5 JUN 2015 00:24
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.5.18)  5 JUN 2015 13:02
 entering extended mode
 **Akshat*Mahajan*-*Physics*180Q*Final*Report.tex
 
@@ -1380,12 +1380,12 @@ mr/m/n/10 for our ex-per-i-ment set-
  []
 
 [4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 362--363
+Underfull \hbox (badness 10000) in paragraph at lines 364--365
  []\OT1/cmr/m/it/9 quED II: User's and Op-er-a-tion Man-ual\OT1/cmr/m/n/9 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 362--363
+Underfull \hbox (badness 10000) in paragraph at lines 364--365
  \OT1/cmr/m/n/9 Qutools Inc. Ver-sion 1.1, Au-gust 30, 2011.
  []
 
@@ -1426,7 +1426,7 @@ onts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmti9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmtt9.pfb>
 Output written on "Akshat Mahajan - Physics 180Q Final Report.pdf" (8 pages, 40
-6548 bytes).
+6872 bytes).
 PDF statistics:
  131 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
